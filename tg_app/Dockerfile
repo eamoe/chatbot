@@ -14,12 +14,13 @@ ENV PYTHONUNBUFFERED 1
 RUN apk update && apk add --no-cache build-base
 
 # Copy application code
+RUN pip install --upgrade pip
+RUN pip install flake8==6.1.0
 COPY . /usr/src/app
 RUN flake8
 
 # Upgrade pip and install dependencies
 COPY ./requirements.txt .
-RUN pip install --upgrade pip
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 #########
