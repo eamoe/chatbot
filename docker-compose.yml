@@ -7,10 +7,12 @@ services:
       context: ./tg_app
       dockerfile: Dockerfile
     container_name: tg_app
+    labels:
+      - com.compose.app=tresaurus-app
     expose:
       - 8000
     env_file:
-      - ./.env.tg_app
+      - ./.env.tg-app
     networks:
       - application
 
@@ -19,18 +21,22 @@ services:
       context: ./web_app
       dockerfile: Dockerfile
     container_name: web_app
+    labels:
+      - com.compose.app=tresaurus-app
     ports:
       - "5000:5000"
     depends_on:
       - mongo_db
     env_file:
-      - ./.env.web_app
+      - ./.env.web-app
     networks:
       - application
 
   mongo_db:
     image: mongo:latest
     container_name: mongo_db
+    labels:
+      - com.compose.app=tresaurus-app
     ports:
       - "27017:27017"
     volumes:
@@ -40,12 +46,14 @@ services:
 
   mongo-express:
     image: mongo-express
+    labels:
+      - com.compose.app=tresaurus-app
     ports:
       - "8081:8081"
     depends_on:
       - mongo_db
-    environment:
-      ME_CONFIG_MONGODB_URL: mongodb://mongo_db:27017/
+    env_file:
+      - ./.env.mongo-express
     networks:
       - application
 
