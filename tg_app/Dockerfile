@@ -11,7 +11,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Install build dependencies
-RUN apk update && apk add --no-cache build-base
+RUN apk update
+# Reduce build time
+# && apk add --no-cache build-base
 
 # Copy application code
 RUN pip install --upgrade pip
