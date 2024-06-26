@@ -15,7 +15,7 @@ RUN apk update && apk add --no-cache build-base
 
 # Check the code with linter
 RUN pip install --upgrade pip
-RUN pip install flake8==6.1.0
+RUN pip install flake8
 COPY . /usr/src/app
 RUN flake8
 
