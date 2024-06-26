@@ -9,7 +9,7 @@ services:
     image: chatbot:0.1
     container_name: tg_app
     expose:
-      - 8000
+      - 8005
     env_file:
       - ./.env.tg-app
     networks:
@@ -24,7 +24,7 @@ services:
     image: webapp:0.1
     container_name: web_app
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on:
       - mongo_db
     env_file:
