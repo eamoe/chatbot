@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+
+  chatbot:
+    build:
+      context: ./tg_app
+      dockerfile: Dockerfile
+    container_name: tg_app
+    expose:
+      - 8000
+    env_file:
+      - ./.env.tg_app
+    networks:
+      - application
+
+  web:
+    build:
+      context: ./web_app
+      dockerfile: Dockerfile
+    container_name: web_app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo_db
+    env_file:
+      - ./.env.web_app
+    networks:
+      - application
+
+  mongo_db:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - application
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo_db
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo_db:27017/
+    networks:
+      - application
+
+networks:
+  application:
