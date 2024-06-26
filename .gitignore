@@ -132,8 +132,9 @@ venv.bak/
 .chatbotvenv
 
 # Env variables
-.env.tg_app
-.env.web_app
+.env.web-app
+.env.tg-app
+.env.mongo-express
 
 # Spyder project settings
 .spyderproject

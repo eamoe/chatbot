@@ -25,7 +25,9 @@ Here is a list of commands it understands:
 
 ## Project Structure
 
-The project structure is as follows:
+The project consists of several modules:
+
+1. `tg_app` that is responsible for running the telegram bot.
 
 ```
 tg_app/
@@ -58,6 +60,8 @@ tg_app/
 │
 └── requirements.txt
 ```
+
+2. `web_app` is a Flask web application that communicates with MongoDB and is used for populating the DB through the web.
 
 ## Documentation Links
 
@@ -92,4 +96,6 @@ You can use handler groups to organize handlers.
 ```console
 docker compose -f docker-compose.yml down
  docker compose -f docker-compose.yml build --no-cache && docker compose -f docker-compose.yml up -d
+ docker compose down --rmi all
+ docker compose config
 ```
