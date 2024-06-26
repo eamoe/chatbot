@@ -37,9 +37,6 @@ services:
   mongo_db:
     image: mongo:latest
     container_name: mongo_db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-      MONGO_INITDB_ROOT_PASSWORD: mongopasswd
     ports:
       - "27017:27017"
     volumes:
@@ -52,11 +49,6 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mongo_express
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: mongoadmin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: mongopasswd
-      ME_CONFIG_BASICAUTH_USERNAME: mongoadmin
-      ME_CONFIG_BASICAUTH_PASSWORD: mongopasswd
     ports:
       - "8081:8081"
     depends_on:
