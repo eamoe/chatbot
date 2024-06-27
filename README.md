@@ -1,10 +1,17 @@
 # Tresaurus Telegram Bot
 
-## Project Description
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Installation](#installation)
+
+## Introduction
 
 **Tresaurus** is a chatbot that helps to memorize new vocabulary.
 
-Here is a list of commands it understands:
+## Features
+
+Here is a list of commands the Tresaurus bot understands:
 
 1. `/start`: Initialize the bot and provide a welcome message with instructions on how to use the bot.
 2. `/help`: Provide a list of available commands and their descriptions.
@@ -22,6 +29,10 @@ Here is a list of commands it understands:
 14. `/progress`: Track and display the user's progress, including words learned, quizzes taken, and success rates.
 15. `/settings`: Configure user preferences such as preferred quiz type, notification settings, etc.
 16. `/feedback`: Provide a way for users to give feedback about the bot or report issues.
+
+## Installation
+
+## Project Description
 
 ## Project Structure
 
@@ -62,6 +73,8 @@ tg_app/
 ```
 
 2. `web_app` is a Flask web application that communicates with MongoDB and is used for populating the DB through the web.
+
+3. `api` is a FastAPI-based API application.
 
 ## Documentation Links
 
@@ -227,3 +240,54 @@ db.cars.aggregate([
   {$limit: 10}
 ]).pretty()
 ```
+
+## FastAPI
+
+Sample program:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello FastAPI"}
+```
+
+Running the app (first `app` is `.py` file, the second `app` is FastAPI instance):
+
+```console
+uvicorn app:app --reload
+```
+
+The `--reload` flag tells Uvicorn to reload the server each time we save our code.
+
+To see the API docs:
+
+```
+http://localhost:8000/docs
+```
+
+One of the first really useful features present in FastAPI is its automatically generated documentation. The documentation is based on the `OpenAPI` specification and relies heavily on Python hints and the parsing and validation library `Pydantic`.
+
+FastAPI sets the 200 status by default if it doesn’t encounter exceptions, so it is up to us to set the correct codes for the various API operations, such as 204 No Content for deleting, 201 for creating, and so on.
+
+## React Application
+
+```console
+sudo npx create-react-app cars
+sudo cd cars && npm start
+```
+
+Moving on to the `src` directory, this is where we will be doing all of our work:
+
+The `App.js` file that represents our entire application – all the components, menus, headers and footers, lists, and controls – will be hosted on this file, which, in turn, will be rendered in our single `div` with the `id` of the root in the HTML file.
+
+We might safely say that `JSX` is the glue that holds the whole React concept together. The smallest building blocks of a React page or app are so-called `React elements`. A simple element might be as follows:
+
+```js
+const title = <h1>The Car Sales App</h1>
+```
+
+A state can be thought of as a set of data that represents the user interface (UI) at any given moment.
