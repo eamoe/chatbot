@@ -99,3 +99,131 @@ docker compose -f docker-compose.yml down
  docker compose down --rmi all
  docker compose config
 ```
+
+## MongoDB
+
+```console
+mongosh
+show dbs
+user <db_name>
+show collections
+```
+
+### Read Operations
+
+```
+db.cars.find() # SELECT * FROM TABLE
+db.cars.find({year:2019})
+db.cars.find({year:{'$gt':2015},price:{$lt:7000},brand:'Ford'}).pretty() # find all Ford cars made in 2016 or later and priced at less than 7,000 euros.
+
+$gt (greater than), $lt (less than), and $in (providing a list of values)
+
+findOne() is similar to find() and it takes an optional filter parameter but returns only the first document that satisfies the criteria.
+
+Projection: allows us to limit and set the fields that will be returned from the query results.
+0 - exclude
+1 - include
+db.cars.find({brand:'Ford',make:'Fiesta'},{year:1,km:1,_id:0}).sort({'year':1}).limit(5)
+```
+
+### Create Operations
+
+```
+db.cars.insertOne({'brand':'Magic Car','make':'Green Dragon', 'year':1200})
+
+Response:
+{
+  acknowledged: true,
+  insertedId: ObjectId('667d325a33136a66690e1d20')
+}
+
+db.cars.insertMany([{brand:'Magic Car',make:'Yellow Dragon',year:1200},{brand:'Magic Car',make:'Red Dragon',legs:4}])
+
+Response:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('667d32a233136a66690e1d21'),
+    '1': ObjectId('667d32a233136a66690e1d22')
+  }
+}
+```
+
+### Update Operations
+
+```
+db.cars.updateOne({make:'Fiesta'},{$set:{'Salesman':'Marko'}}) # updates first encountered document.
+
+Response:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+db.cars.updateMany({make:'Fiesta'},{$inc:{price:-200}})
+
+Response:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 106,
+  modifiedCount: 106,
+  upsertedCount: 0
+}
+
+MongoDB also provides a replaceOne operator that takes a filter, like our earlier methods, but expects also an entire document that will take the place of the preceding one.
+```
+
+### Delete Operations
+
+```
+db.cars.deleteMany({brand:'Magic Car'})
+
+Response:
+{ acknowledged: true, deletedCount: 3 }
+
+db.cars.drop()
+```
+
+### Cursors
+
+One important thing to note is that the find methods return a cursor and not the actual results.
+
+```
+let fiesta_cars = db.cars.find({'make':'Fiesta'})
+fiesta_cars.hasNext()
+fiesta_cars.next()
+
+db.cars.find({year:2015},{brand:1,make:1,year:1,_id:0,price:1}).sort({price:1}).limit(5)
+```
+
+### Aggregation framework
+
+```
+match --> project -> group --> sort --> limit
+```
+
+```
+db.cars.aggregate([{$match: {brand:"Fiat"}}])
+
+db.cars.aggregate([
+{$match: {brand:"Fiat"}},
+{$group:{_id:{model:"$make"},avgPrice: { $avg: "$price"} }}
+])
+
+db.cars.aggregate([
+{$match: {brand:"Fiat"}},
+{$group:{_id:{year:"year"},avgPrice: { $avg: "$price"} }}
+])
+
+db.cars.aggregate([
+  {$match:{brand:"Opel"}},
+  {$project:{_id:0,price:1,year:1,fullName:{$concat:["$make"," ","$brand"]}}},      
+   {$group:{_id:{make:"$fullName"},avgPrice:{$avg:"$price"}}},
+  {$sort: {avgPrice: -1}},
+  {$limit: 10}
+]).pretty()
+```
