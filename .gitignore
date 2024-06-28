@@ -133,9 +133,10 @@ venv.bak/
 .fastapivenv
 
 # Env variables
-.env.web-app
 .env.tg-app
+.env.mongodb
 .env.mongo-express
+.env.web-app
 
 # Spyder project settings
 .spyderproject
