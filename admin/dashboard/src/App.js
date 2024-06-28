@@ -1,16 +1,17 @@
 import './App.css';
 import Header from "./components/Header";
 import WordForm from "./components/WordForm";
-import Card from "./components/Card";
+import WordCard from "./components/Card";
 
 function App() {
     let words = [
-        { wordName: "Fruit", partOfSpeech: "noun", definition: "A short definition"},
+        {wordName: "Fruit", partOfSpeech: "noun", definition: "A short definition"},
         { wordName: "Milk", partOfSpeech: "noun", definition: "A short definition"},
         { wordName: "Change", partOfSpeech: "verb", definition: "A short definition"},
         { wordName: "Sentence", partOfSpeech: "noun", definition: "A short definition"},
         { wordName: "Abbreviation", partOfSpeech: "noun", definition: "A short definition"}
   ]
+
     return (
     <div className="App">
         <div className="container">
@@ -28,7 +29,7 @@ function App() {
                         {words.map(
                             (el) => {
                                 return (
-                                    <Card key={el.id} word={el}/>
+                                    <WordCard key={el.id} word={el}/>
                                 )
                             }
                         )}
