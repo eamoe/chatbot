@@ -76,6 +76,17 @@ tg_app/
 
 3. `api` is a FastAPI-based API application.
 
+4. `admin` is a React app with Bootstrap for styling.
+
+This app is dedicated to manage Tresaurus data in the web. 
+
+The source code for Bootstrap can be found under `src_bootstrap` directory. In order to compile it, run the following commands:
+
+```console
+npx mix -dev
+npx mix --production
+```
+
 ## Documentation Links
 
 The `update` object contains all the information and data that are coming from Telegram itself (the message, the user who issued the command, etc.).
