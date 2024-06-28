@@ -1,4 +1,4 @@
-const Header = () => {
+const AppHeader = () => {
   return (
       <div id="header" className="row my-5">
         <h1 className="text-center">Tresaurus Admin Application</h1>
@@ -6,4 +6,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default AppHeader
