@@ -3,6 +3,8 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from models import WordBase
 from config import COLLECTION_NAME
+from typing import Any, Dict
+from bson import ObjectId
 
 
 router = APIRouter()

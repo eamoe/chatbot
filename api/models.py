@@ -3,8 +3,6 @@ from typing import Optional
 from pydantic import Field, BaseModel, GetJsonSchemaHandler
 from typing import Any, Dict
 from fastapi.encoders import jsonable_encoder
-from pydantic_core import CoreSchema
-
 
 
 # Transform ObjectId into a string representation that will ensure uniqueness
@@ -20,11 +18,8 @@ class PyObjectId(ObjectId):
         return ObjectId(v)
 
     @classmethod
-    def __get_pydantic_json_schema__(cls, core_schema: CoreSchema, handler: GetJsonSchemaHandler) -> Dict[str, Any]:
-        json_schema = super().__get_pydantic_json_schema__(core_schema, handler)
-        json_schema = handler.resolve_ref_schema(json_schema)
-        json_schema.update(type='string')
-        return json_schema
+    def __modify_schema__(cls, field_schema):
+        field_schema.update(type="string")
 
 
 # Extend Pydantic’s BaseModel with the PyObjectId
