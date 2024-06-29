@@ -1,6 +1,6 @@
-import os
+from decouple import config
 
-# EUTODO: implement python-decouple package
-DB_URL = os.getenv('DB_URL')
-DB_NAME = os.getenv('DB_NAME', 'dictionary')
-COLLECTION_NAME = os.getenv('COLLECTION_NAME', 'vocabulary')
+
+DB_URL = config('DB_URL', cast=str)
+DB_NAME = config('DB_NAME', cast=str)
+COLLECTION_NAME = config('COLLECTION_NAME', cast=str)
