@@ -35,17 +35,13 @@ class PyObjectId(ObjectId):
 
 # Extend Pydantic’s BaseModel with the PyObjectId
 class MongoBaseModel(BaseModel):
-    # id: Annotated[ObjectId, PyObjectId]
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-
-    # class Config:
-    #     json_encoders = {ObjectId: str}
 
 
 class WordBase(MongoBaseModel):
     wordName: str = Field(default=..., min_length=1)
     partOfSpeech: str = Field(default=..., min_length=4)
-    definition: str = Field(default=..., max_length=255)
+    definition: str = Field(default=..., max_length=500)
 
 
 class WordUpdate(MongoBaseModel):
