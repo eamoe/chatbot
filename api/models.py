@@ -49,6 +49,8 @@ class WordBase(MongoBaseModel):
 
 
 class WordUpdate(MongoBaseModel):
+    wordName: str
+    partOfSpeech: str
     definition: Optional[str] = None
 
 

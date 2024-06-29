@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Request, Body, status, HTTPException
+from fastapi import APIRouter, Request, Body, status, HTTPException, Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
-from models import WordBase, WordDB
+from models import WordBase, WordDB, WordUpdate
 from config import COLLECTION_NAME
 from typing import Optional, List
 
@@ -29,6 +29,13 @@ async def list_all_words(request: Request,
     return results
 
 
+@router.get("/{id}", response_description="Get a single word")
+async def show_word(id: str, request: Request):
+    if (word := await request.app.mongodb[COLLECTION_NAME].find_one({"_id": id})) is not None:
+        return WordDB(**word)
+    raise HTTPException(status_code=404, detail=f"Word with id={id} not found")
+
+
 @router.post("/", response_description="Add new word")
 async def create_word(request: Request, word: WordBase = Body(...)):
     # EUTODO: Handle duplicates in DB
@@ -38,8 +45,17 @@ async def create_word(request: Request, word: WordBase = Body(...)):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_word)
 
 
-@router.get("/{id}", response_description="Get a single word")
-async def show_word(id: str, request: Request):
+@router.patch("/{id}", response_description="Update word")
+async def update_word(id: str, request: Request, word: WordUpdate = Body(...)):
+    await request.app.mongodb[COLLECTION_NAME].update_one({"_id": id}, {"$set": word.dict(exclude_unset=True)})
+
     if (word := await request.app.mongodb[COLLECTION_NAME].find_one({"_id": id})) is not None:
         return WordDB(**word)
     raise HTTPException(status_code=404, detail=f"Word with id={id} not found")
+
+
+@router.delete("/{id}", response_description="Delete word", status_code=204, response_class=Response)
+async def delete_word(id: str, request: Request):
+    delete_result = await request.app.mongodb[COLLECTION_NAME].delete_one({"_id": id})
+    if delete_result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail=f"Word with id={id} not found")
