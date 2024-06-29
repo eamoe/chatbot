@@ -43,13 +43,13 @@ class MongoBaseModel(BaseModel):
 
 
 class WordBase(MongoBaseModel):
-    wordName: str = Field(..., min_length=1)
-    partOfSpeech: str = Field(..., min_length=4)
-    definition: str = Field(..., max_length=255)
+    wordName: str = Field(default=..., min_length=1)
+    partOfSpeech: str = Field(default=..., min_length=4)
+    definition: str = Field(default=..., max_length=255)
 
 
 class WordUpdate(MongoBaseModel):
-    definition: Optional[int] = None
+    definition: Optional[str] = None
 
 
 class WordDB(WordBase):
