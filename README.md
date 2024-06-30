@@ -2,14 +2,19 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Features](#features)
+2. [Application Modules](#application-modules)
+   - [Telegram Bot](#telegram-bot)
+   - [Admin](#admin)
+   - [API](#api)
 3. [Installation](#installation)
 
 ## Introduction
 
 **Tresaurus** is a chatbot that helps to memorize new vocabulary.
 
-## Features
+## Application Modules
+
+### Telegram Bot
 
 Here is a list of commands the Tresaurus bot understands:
 
@@ -29,6 +34,10 @@ Here is a list of commands the Tresaurus bot understands:
 14. `/progress`: Track and display the user's progress, including words learned, quizzes taken, and success rates.
 15. `/settings`: Configure user preferences such as preferred quiz type, notification settings, etc.
 16. `/feedback`: Provide a way for users to give feedback about the bot or report issues.
+
+### Admin
+
+### API
 
 ## Installation
 
