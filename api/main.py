@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from config import DB_URL, DB_NAME
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -5,7 +6,21 @@ from routers.words import router as words_router
 import uvicorn
 
 
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
+
 app = FastAPI()
+
+app.add_middleware(CORSMiddleware,
+                   allow_origins=origins,
+                   allow_credentials=True,
+                   allow_methods=["*"],
+                   allow_headers=["*"],)
+
 app.include_router(words_router, prefix="/words", tags=["words"])
 
 
