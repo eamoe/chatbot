@@ -80,6 +80,12 @@ telegram-bot/
 
 ### Admin
 
+Available pages:
+* A home page, at the route `/`.
+* A words page for displaying all words or according to some filter: `/words`.
+* A new word page, with a form for inserting new words: `/words/new`.
+* A single word page, for viewing/ updating/ deleting a single word by ID: `/words/:id`.
+
 ### API
 
 This module provides the backend functionality for Tresaurus Telegram bot. The API is built using FastAPI.
