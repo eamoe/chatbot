@@ -63,4 +63,5 @@ RUN chown -R app:app $APP_HOME
 USER app
 
 # Specify the entry point for the container
-ENTRYPOINT ["python", "/home/app/main.py"]
+CMD ["fastapi", "run", "app/main.py", "--proxy-headers", "--port", "8000"]
+#ENTRYPOINT ["python", "/home/app/main.py"]
