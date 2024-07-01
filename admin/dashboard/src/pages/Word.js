@@ -2,6 +2,7 @@ import AppLayout from "../components/AppLayout";
 import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import FormInput from "../components/FormInput";
+import FormTextarea from "../components/FormTextarea";
 
 let BASE_URL = "http://10.211.55.11:8475/words/"
 
@@ -109,6 +110,7 @@ const Word = () => {
                                   <span className="text-muted"> ({word.partOfSpeech})</span>
                               </h5>
                               <form className="my-5">
+                                  <label htmlFor="wordName" className="form-label d-none">Word</label>
                                   <FormInput
                                       cssStyle="form-control d-none"
                                       id="wordName"
@@ -121,6 +123,7 @@ const Word = () => {
                                       disabled={true}
                                       required
                                   />
+                                  <label htmlFor="partOfSpeech" className="form-label d-none">Part of speech</label>
                                   <FormInput
                                       cssStyle="form-control d-none"
                                       id="partOfSpeech"
@@ -134,7 +137,7 @@ const Word = () => {
                                       required
                                   />
                                   <label htmlFor="definition" className="form-label">Definition</label>
-                                  <FormInput
+                                  <FormTextarea
                                       cssStyle="form-control"
                                       id="definition"
                                       label="Definition"
