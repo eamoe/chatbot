@@ -6,11 +6,16 @@
    - [Telegram Bot](#telegram-bot)
    - [Admin](#admin)
    - [API](#api)
+   - [Database](#database)
 3. [Installation](#installation)
 
 ## Introduction
 
-**Tresaurus** is a chatbot that helps to memorize new vocabulary.
+**Tresaurus** is your personal vocabulary assistant on Telegram!
+
+Tresaurus helps you memorize new words effortlessly through interactive quizzes and personalized word lists,
+making language learning engaging and effective. Perfect for students, professionals,
+and language enthusiasts looking to expand their vocabulary.
 
 ## Application Modules
 
@@ -74,6 +79,10 @@ tg_app/
 ### API
 
 To see the API docs, open either `http://localhost:8475/docs/` or `http://localhost:8475/redoc/`.
+
+### Database
+
+As an interface for the MongoDB, the mongo-express is used. It can be reached at `http://localhost:8081/`
 
 ## Installation
 

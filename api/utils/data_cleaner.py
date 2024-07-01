@@ -117,7 +117,7 @@ class DataCleaner:
 
 
 if __name__ == '__main__':
-
+    # EUTODO: Get vars from .env file
     DB_URL = "mongodb://localhost:27017/"
     DB_NAME = "dictionary"
     COLLECTION_NAME = "vocabulary"
