@@ -1,4 +1,4 @@
-import AppHeader from "./components/AppHeader";
+import AppLayout from "./components/AppLayout";
 import AddNewWord from "./components/add-new-word/AddNewWord";
 import FilterableWordList from "./components/word-list/FilterableWordList";
 
@@ -11,20 +11,14 @@ const WORDS = [
   {name: "Peas", partOfSpeech: "noun", definition: "A short definition"}
 ];
 
-export default function App() {
+// <AddNewWord/>
+// <FilterableWordList words={WORDS}/>
+function App() {
   return (
-      <div className="container">
-          <div className="row">
-              <AppHeader/>
-          </div>
-          <div className="row">
-              <div className="col-md-5">
-                  <AddNewWord/>
-              </div>
-              <div className="col-md-7">
-                  <FilterableWordList words={WORDS}/>
-              </div>
-          </div>
-      </div>
+      <AppLayout>
+          <div>This is the app!</div>
+      </AppLayout>
   );
 }
+
+export default App

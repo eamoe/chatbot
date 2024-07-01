@@ -1,6 +1,9 @@
+import AppLayout from "../components/AppLayout";
 const About = () => {
   return (
-    <div>About</div>
+      <AppLayout>
+          <div>About</div>
+      </AppLayout>
   )
 }
 export default About

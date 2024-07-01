@@ -1,6 +1,9 @@
+import AppLayout from "../components/AppLayout";
 const Words = () => {
   return (
-    <div>Words</div>
+      <AppLayout>
+          <div>Words</div>
+      </AppLayout>
   )
 }
 export default Words
