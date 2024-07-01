@@ -73,6 +73,8 @@ tg_app/
 
 ### API
 
+To see the API docs, open either `http://localhost:8475/docs/` or `http://localhost:8475/redoc/`.
+
 ## Installation
 
 ## Project Description

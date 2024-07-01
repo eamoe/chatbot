@@ -64,4 +64,3 @@ USER app
 
 # Specify the entry point for the container
 CMD ["fastapi", "run", "/home/app/main.py", "--proxy-headers", "--port", "8000"]
-#ENTRYPOINT ["python", "/home/app/main.py"]
