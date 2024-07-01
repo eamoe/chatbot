@@ -4,10 +4,10 @@ services:
 
   chatbot:
     build:
-      context: ./tg_app
+      context: ./telegram-bot
       dockerfile: Dockerfile
-    image: chatbot:0.1
-    container_name: tg_app
+    image: telegram-bot:0.1
+    container_name: telegram-bot
     expose:
       - 8000
     env_file:

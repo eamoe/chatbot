@@ -4,8 +4,12 @@
 1. [Introduction](#introduction)
 2. [Application Modules](#application-modules)
    - [Telegram Bot](#telegram-bot)
+     - [Commands](#telegram-bot-commands)
+     - [Module structure](#telegram-bot-module-structure)
    - [Admin](#admin)
    - [API](#api)
+     - [Features](#api-features)
+     - [Endpoints](#endpoints)
    - [Database](#database)
 3. [Installation](#installation)
 
@@ -21,7 +25,7 @@ and language enthusiasts looking to expand their vocabulary.
 
 ### Telegram Bot
 
-Here is a list of commands the Tresaurus bot understands:
+#### Telegram Bot Commands
 
 1. `/start`: Initialize the bot and provide a welcome message with instructions on how to use the bot.
 2. `/help`: Provide a list of available commands and their descriptions.
@@ -40,10 +44,10 @@ Here is a list of commands the Tresaurus bot understands:
 15. `/settings`: Configure user preferences such as preferred quiz type, notification settings, etc.
 16. `/feedback`: Provide a way for users to give feedback about the bot or report issues.
 
-Here is the module structure:
+#### Telegram Bot Module Structure
 
 ```
-tg_app/
+telegram-bot/
 │
 ├── main.py                 # Main application
 ├── config.py               # Configuration settings
@@ -78,7 +82,17 @@ tg_app/
 
 ### API
 
-To see the API docs, open either `http://localhost:8475/docs/` or `http://localhost:8475/redoc/`.
+This module provides the backend functionality for Tresaurus Telegram bot. The API is built using FastAPI.
+
+#### API Features
+
+**Word Management**: Add, update, delete, and retrieve vocabulary words.
+**Quiz Generation**: Generate and manage quizzes for vocabulary practice.
+**Progress Tracking**: Track user progress and provide feedback.
+
+#### Endpoints
+
+All available endpoints can be found at `http://localhost:8475/docs/` or `http://localhost:8475/redoc/`.
 
 ### Database
 
