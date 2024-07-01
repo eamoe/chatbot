@@ -85,6 +85,7 @@ Available pages:
 * A words page for displaying all words or according to some filter: `/words`.
 * A new word page, with a form for inserting new words: `/words/new`.
 * A single word page, for viewing/ updating/ deleting a single word by ID: `/words/:id`.
+* An about page: `/about`.
 
 ### API
 
