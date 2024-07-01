@@ -35,19 +35,7 @@ Here is a list of commands the Tresaurus bot understands:
 15. `/settings`: Configure user preferences such as preferred quiz type, notification settings, etc.
 16. `/feedback`: Provide a way for users to give feedback about the bot or report issues.
 
-### Admin
-
-### API
-
-## Installation
-
-## Project Description
-
-## Project Structure
-
-The project consists of several modules:
-
-1. `tg_app` that is responsible for running the telegram bot.
+Here is the module structure:
 
 ```
 tg_app/
@@ -80,6 +68,18 @@ tg_app/
 │
 └── requirements.txt
 ```
+
+### Admin
+
+### API
+
+## Installation
+
+## Project Description
+
+## Project Structure
+
+The project consists of several modules:
 
 2. `web_app` is a Flask web application that communicates with MongoDB and is used for populating the DB through the web.
 
