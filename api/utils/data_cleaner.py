@@ -37,14 +37,14 @@ class DataCleaner:
             self.__get_collection().insert_many(documents)
             logger.info(f"Inserted {len(documents)} documents into '{self.collection_name}' collection.")
         else:
-            logger.info(f"No documents found to convert.")
+            logger.info("No documents found to convert.")
 
     def __delete_many_documents(self, id_list):
         if id_list:
             self.__get_collection().delete_many({'_id': {'$in': id_list}})
             logger.info(f"Deleted {len(id_list)} documents from '{self.collection_name}' collection.")
         else:
-            logger.info(f"No documents found to delete.")
+            logger.info("No documents found to delete.")
 
     def __process_document(self, document):
         if isinstance(document["_id"], ObjectId):
