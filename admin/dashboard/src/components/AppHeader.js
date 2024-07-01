@@ -1,7 +1,7 @@
 import {Link, NavLink} from "react-router-dom";
 const AppHeader = () => {
   return (
-      <div id="header" className="row my-5">
+      <div id="header" className="row">
           <nav className="navbar navbar-expand-lg bg-light">
               <div className="container-fluid">
                   <Link to="/" className="navbar-brand">Tresaurus</Link>

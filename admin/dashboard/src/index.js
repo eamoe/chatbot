@@ -15,10 +15,10 @@ root.render(
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<App />} />
-              <Route path="words" element={<Words />} />
-              <Route path="words/new" element={<NewWord />} />
-              <Route path="words/:id" element={<Word />} />
-              <Route path="about" element={<About />} />
+              <Route path="/words" element={<Words />} />
+              <Route path="/words/new" element={<NewWord />} />
+              <Route path="/words/:id" element={<Word />} />
+              <Route path="/about" element={<About />} />
           </Routes>
       </BrowserRouter>
   </React.StrictMode>
