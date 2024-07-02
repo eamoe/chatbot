@@ -10,7 +10,7 @@ const WordCard = ({ word }) => {
 
     return (
         <div onClick={handleClick} style={{cursor: "pointer"}}>
-            <div className="border-1 shadow-sm rounded-3 p-3 mb-4">
+            <div className="border-1 shadow rounded-3 p-3 my-5">
                 <p className="h5 text-center mb-3">
                     <span>{wordName.charAt(0).toLowerCase() + wordName.slice(1)}</span>
                 </p>

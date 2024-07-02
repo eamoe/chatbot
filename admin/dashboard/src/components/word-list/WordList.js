@@ -12,7 +12,13 @@ const WordList = ({words, filterText}) => {
     });
 
     return (
-        <div>{cards}</div>
+        <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
+                <div>{cards}</div>
+            </div>
+            <div className="col-md-2"></div>
+        </div>
     );
 }
 
