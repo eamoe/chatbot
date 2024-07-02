@@ -8,8 +8,6 @@ services:
       dockerfile: Dockerfile
     image: telegram-bot:0.1
     container_name: telegram-bot
-#    expose:
-#      - 8000
     env_file:
       - ./.env.bot
     networks:
@@ -40,16 +38,14 @@ services:
       dockerfile: Dockerfile
     image: react-app:0.1
     container_name: react-app
-    expose:
-      - 8000
     ports:
-      - "3000:8000"
+      - "3000:80"
     depends_on:
       - api
     env_file:
       - ./.env.admin
-    volumes:
-      - ./build:/usr/share/nginx/html
+#    volumes:
+#      - ./build:/usr/share/nginx/html
     networks:
       - tresaurus-app-public-network
     labels:
