@@ -348,3 +348,5 @@ A state can be thought of as a set of data that represents the user interface (U
 
 1. Upload data with mongo express.
 2. Change DB_URL in utils/data_cleaner.py to DB_URL = "mongodb://10.211.55.11:27017/" and run it in PyCharm.
+
+docker system prune - sometimes helps.
