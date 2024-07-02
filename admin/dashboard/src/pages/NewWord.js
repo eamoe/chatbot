@@ -2,7 +2,7 @@ import AppLayout from "../components/AppLayout";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-let BASE_URL = "http://localhost:3000/words"
+let BASE_URL = "http://localhost:8000/words/"
 
 const NewWord = () => {
 
