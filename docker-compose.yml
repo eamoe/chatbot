@@ -44,8 +44,8 @@ services:
       - api
     env_file:
       - ./.env.admin
-    volumes:
-      - ./build:/usr/share/nginx/html
+#    volumes:
+#      - ./build:/usr/share/nginx/html
     networks:
       - tresaurus-app-public-network
     labels:
