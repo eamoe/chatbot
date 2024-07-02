@@ -1,5 +1,5 @@
 from fastapi.middleware.cors import CORSMiddleware
-from config import DB_URL, DB_NAME
+from config import DB_URL, DB_NAME, COLLECTION_NAME
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 from routers.words import router as words_router
@@ -30,6 +30,7 @@ app.include_router(words_router, prefix="/words", tags=["words"])
 async def startup_db_client():
     app.mongodb_client = AsyncIOMotorClient(DB_URL)
     app.mongodb = app.mongodb_client[DB_NAME]
+    await app.mongodb[COLLECTION_NAME].create_index([("wordName", 1)])
 
 
 # Close the MongoDB connection by attaching it to the event shutdown  of FastAPI

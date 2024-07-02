@@ -24,7 +24,7 @@ async def list_all_words(request: Request,
         query["partOfSpeech"] = part_of_speech
     if definition:
         query["definition"] = definition
-    full_query = request.app.mongodb[COLLECTION_NAME].find(query).sort("_id", 1).skip(skip).limit(RESULTS_PER_PAGE)
+    full_query = request.app.mongodb[COLLECTION_NAME].find(query).sort("wordName", 1).skip(skip).limit(RESULTS_PER_PAGE)
     results = [WordDB(**raw_word) async for raw_word in full_query]
     return results
 
