@@ -34,6 +34,23 @@ services:
     labels:
       - com.compose.app=tresaurus-app
 
+  react-app:
+    build:
+      context: ./admin/dashboard
+      dockerfile: Dockerfile
+    image: react-app:0.1
+    container_name: react-app
+    ports:
+      - "3000:8000"
+    env_file:
+      - ./.env.admin
+    volumes:
+      - ./build:/usr/share/nginx/html
+    networks:
+      - tresaurus-app-public-network
+    labels:
+      - com.compose.app=tresaurus-app
+
   mongo_db:
     image: mongo:latest
     container_name: mongo_db
