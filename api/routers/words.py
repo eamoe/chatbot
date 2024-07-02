@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from models import WordBase, WordDB, WordUpdate
 from config import COLLECTION_NAME
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 
 
 router = APIRouter()
@@ -14,19 +14,22 @@ async def list_all_words(request: Request,
                          word_name: str = "",
                          part_of_speech: str = "",
                          definition: Optional[str] = None,
-                         page: int = 1,) -> List[WordDB]:
+                         page: int = 1,
+                         ) -> Dict[str, Any]:
     RESULTS_PER_PAGE = 25
     skip = (page - 1) * RESULTS_PER_PAGE
     query = {}
     if word_name:
-        query["wordName"] = word_name
+        query["wordName"] = {"$regex": word_name, "$options": "i"}
     if part_of_speech:
-        query["partOfSpeech"] = part_of_speech
+        query["partOfSpeech"] = {"$regex": part_of_speech, "$options": "i"}
     if definition:
-        query["definition"] = definition
+        query["definition"] = {"$regex": definition, "$options": "i"}
+    total_count = await request.app.mongodb[COLLECTION_NAME].count_documents(query)
+    total_pages = (total_count + RESULTS_PER_PAGE - 1) // RESULTS_PER_PAGE
     full_query = request.app.mongodb[COLLECTION_NAME].find(query).sort("wordName", 1).skip(skip).limit(RESULTS_PER_PAGE)
     results = [WordDB(**raw_word) async for raw_word in full_query]
-    return results
+    return {"words": results, "totalPages": total_pages}
 
 
 @router.get("/{id}", response_description="Get a single word")
