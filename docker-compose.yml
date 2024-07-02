@@ -2,54 +2,54 @@ version: '3.8'
 
 services:
 
-  chatbot:
-    build:
-      context: ./telegram-bot
-      dockerfile: Dockerfile
-    image: telegram-bot:0.1
-    container_name: telegram-bot
-    env_file:
-      - ./.env.bot
-    networks:
-      - tresaurus-app-public-network
-    labels:
-      - com.compose.app=tresaurus-app
+#  chatbot:
+#    build:
+#      context: ./telegram-bot
+#      dockerfile: Dockerfile
+#    image: telegram-bot:0.1
+#    container_name: telegram-bot
+#    env_file:
+#      - ./.env.bot
+#    networks:
+#      - tresaurus-app-public-network
+#    labels:
+#      - com.compose.app=tresaurus-app
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    image: api:0.1
-    container_name: api
-    ports:
-      - "8475:8000"
-    depends_on:
-      - mongo_db
-    env_file:
-      - ./.env.api
-    networks:
-      - tresaurus-app-public-network
-    labels:
-      - com.compose.app=tresaurus-app
+#  api:
+#    build:
+#      context: ./api
+#      dockerfile: Dockerfile
+#    image: api:0.1
+#    container_name: api
+#    ports:
+#      - "8475:8000"
+#    depends_on:
+#      - mongo_db
+#    env_file:
+#      - ./.env.api
+#    networks:
+#      - tresaurus-app-public-network
+#    labels:
+#      - com.compose.app=tresaurus-app
 
-  react-app:
-    build:
-      context: ./admin/dashboard
-      dockerfile: Dockerfile
-    image: react-app:0.1
-    container_name: react-app
-    ports:
-      - "80:3000"
-    depends_on:
-      - api
-    env_file:
-      - ./.env.admin
+#  react-app:
+#    build:
+#      context: ./admin/dashboard
+#      dockerfile: Dockerfile
+#    image: react-app:0.1
+#    container_name: react-app
+#    ports:
+#      - "80:3000"
+#    depends_on:
+#      - api
+#    env_file:
+#      - ./.env.admin
 #    volumes:
 #      - ./build:/usr/share/nginx/html
-    networks:
-      - tresaurus-app-public-network
-    labels:
-      - com.compose.app=tresaurus-app
+#    networks:
+#      - tresaurus-app-public-network
+#    labels:
+#      - com.compose.app=tresaurus-app
 
   mongo_db:
     image: mongo:latest
