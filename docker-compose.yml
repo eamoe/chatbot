@@ -40,6 +40,8 @@ services:
       dockerfile: Dockerfile
     image: react-app:0.1
     container_name: react-app
+    expose:
+      - 8000
     ports:
       - "3000:8000"
     depends_on:
