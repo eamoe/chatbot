@@ -1,7 +1,7 @@
 const SearchBar = ({filterText, onFilterTextChange}) => {
     return (
         <form>
-            <div className="row my-3">
+            <div className="row mt-5">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
                     <div className="mb-3">
