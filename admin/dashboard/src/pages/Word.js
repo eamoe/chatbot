@@ -114,12 +114,10 @@ const Word = () => {
                                   <FormInput
                                       cssStyle="form-control d-none"
                                       id="wordName"
-                                      label="Word"
                                       type="text"
                                       placeholder="word..."
                                       value={wordName}
-                                      onChange={() => {
-                                      }}
+                                      onChange={() => {}}
                                       disabled={true}
                                       required
                                   />
@@ -127,12 +125,10 @@ const Word = () => {
                                   <FormInput
                                       cssStyle="form-control d-none"
                                       id="partOfSpeech"
-                                      label="Part of speech"
                                       type="text"
                                       placeholder="part of speech..."
                                       value={partOfSpeech}
-                                      onChange={() => {
-                                      }}
+                                      onChange={() => {}}
                                       disabled={true}
                                       required
                                   />
@@ -140,12 +136,12 @@ const Word = () => {
                                   <FormTextarea
                                       cssStyle="form-control"
                                       id="definition"
-                                      label="Definition"
                                       type="text"
                                       placeholder="Add new value..."
                                       value={definition}
                                       disabled={false}
-                                      onChange={onChangeDefinition} required
+                                      onChange={onChangeDefinition}
+                                      required
                                   />
                                   <a onClick={handleDelete} className="card-link">Delete Word</a>
                                   <a onClick={updateWord} className="card-link">Edit Word</a>
