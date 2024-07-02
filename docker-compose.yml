@@ -39,7 +39,7 @@ services:
     image: react-app:0.1
     container_name: react-app
     ports:
-      - "3000:80"
+      - "80:3000"
     depends_on:
       - api
     env_file:
