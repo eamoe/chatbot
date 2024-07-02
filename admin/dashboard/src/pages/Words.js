@@ -2,7 +2,7 @@ import AppLayout from "../components/AppLayout";
 import FilterableWordList from "../components/word-list/FilterableWordList";
 import {useState, useEffect} from "react";
 
-let BASE_URL = "http://10.211.55.11:8475/words/"
+let BASE_URL = "http://localhost:3000/words/"
 
 const Words = () => {
 

@@ -4,7 +4,7 @@ import {useParams, useNavigate} from "react-router-dom";
 import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
 
-let BASE_URL = "http://10.211.55.11:8475/words/"
+let BASE_URL = "http://localhost:3000/words"
 
 const Word = () => {
 
