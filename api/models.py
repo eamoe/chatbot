@@ -41,7 +41,7 @@ class MongoBaseModel(BaseModel):
 class WordBase(MongoBaseModel):
     wordName: str = Field(default=..., min_length=1)
     partOfSpeech: str = Field(default=..., min_length=4)
-    definition: str = Field(default=..., max_length=500)
+    definition: str = Field(default=...)  # max_length=500
 
 
 class WordUpdate(MongoBaseModel):
