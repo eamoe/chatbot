@@ -5,6 +5,7 @@ import Pagination from "../components/word-list/Pagination";
 import {useState, useEffect} from "react";
 
 const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
 const Words = () => {
 
     const [words, setWords] = useState([])
