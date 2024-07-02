@@ -52,7 +52,7 @@ services:
 #      - com.compose.app=tresaurus-app
 
   mongo_db:
-    image: mongo:latest
+    image: mongo:7.0.0-focal-arm64
     container_name: mongo_db
     ports:
       - "27017:27017"
