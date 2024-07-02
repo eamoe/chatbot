@@ -136,6 +136,7 @@ venv.bak/
 .env.bot
 .env.api
 .env.express
+.env.admin
 .env.web-app
 
 # Spyder project settings

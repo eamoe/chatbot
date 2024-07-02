@@ -4,8 +4,7 @@ import {useParams, useNavigate} from "react-router-dom";
 import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
 
-let BASE_URL = "http://localhost:8000/words/"
-
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 const Word = () => {
 
     let {id} = useParams()
@@ -30,7 +29,7 @@ const Word = () => {
     };
 
     const getWord =  async() => {
-        const res = await fetch(`${BASE_URL}${id}`)
+        const res = await fetch(`${REACT_APP_BASE_URL}${id}`)
         if (!res.ok){
             setError("Error fetching word")
         } else {
@@ -43,7 +42,7 @@ const Word = () => {
     }
 
     const handleDelete = async () => {
-        const response = await fetch(`${BASE_URL}${id}`,{
+        const response = await fetch(`${REACT_APP_BASE_URL}${id}`,{
             method:"DELETE",
             headers:{
                 'Content-Type':'application/json'
@@ -63,7 +62,7 @@ const Word = () => {
     }
 
     const updateWord = async () => {
-        const response = await fetch(`${BASE_URL}${id}`,{
+        const response = await fetch(`${REACT_APP_BASE_URL}${id}`,{
             method:"PATCH",
             headers:{
                 'Content-Type':'application/json'

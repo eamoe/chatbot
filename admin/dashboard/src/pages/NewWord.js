@@ -2,7 +2,7 @@ import AppLayout from "../components/AppLayout";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-let BASE_URL = "http://localhost:8000/words/"
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const NewWord = () => {
 
@@ -31,7 +31,7 @@ const NewWord = () => {
     }
 
     const addWord = async (newWord)=>{
-        const response = await fetch(BASE_URL, {
+        const response = await fetch(REACT_APP_BASE_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

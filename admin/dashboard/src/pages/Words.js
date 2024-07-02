@@ -4,8 +4,7 @@ import {useState, useEffect} from "react";
 import SearchBar from "../components/word-list/SearchBar";
 import Pagination from "../components/Pagination";
 
-let BASE_URL = "http://localhost:8000/words/"
-
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 const Words = () => {
 
     const [words, setWords] = useState([])
@@ -18,7 +17,7 @@ const Words = () => {
     }, [filterText, page]);
 
     const fetchWords = async () => {
-        const response = await fetch(`${BASE_URL}?word_name=${filterText}&page=${page}`);
+        const response = await fetch(`${REACT_APP_BASE_URL}?word_name=${filterText}&page=${page}`);
         const data = await response.json();
         setWords(data.words);
         setTotalPages(data.totalPages);
