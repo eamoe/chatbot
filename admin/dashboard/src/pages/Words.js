@@ -1,8 +1,8 @@
 import AppLayout from "../components/AppLayout";
-import FilterableWordList from "../components/word-list/FilterableWordList";
-import {useState, useEffect} from "react";
 import SearchBar from "../components/word-list/SearchBar";
-import Pagination from "../components/Pagination";
+import FilterableWordList from "../components/word-list/FilterableWordList";
+import Pagination from "../components/word-list/Pagination";
+import {useState, useEffect} from "react";
 
 const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 const Words = () => {

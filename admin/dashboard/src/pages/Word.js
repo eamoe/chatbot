@@ -1,8 +1,8 @@
 import AppLayout from "../components/AppLayout";
-import {useState, useEffect} from "react";
-import {useParams, useNavigate} from "react-router-dom";
 import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
+import {useState, useEffect} from "react";
+import {useParams, useNavigate} from "react-router-dom";
 
 const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 const Word = () => {
