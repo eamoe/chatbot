@@ -17,23 +17,6 @@ services:
     labels:
       - com.compose.app=tresaurus-app
 
-#  web:
-#    build:
-#      context: ./web_app
-#      dockerfile: Dockerfile
-#    image: webapp:0.1
-#    container_name: web_app
-#    ports:
-#      - "5000:5000"
-#    depends_on:
-#      - mongo_db
-#    env_file:
-#      - ./.env.web-app
-#    networks:
-#      - tresaurus-app-public-network
-#    labels:
-#      - com.compose.app=tresaurus-app
-
   api:
     build:
       context: ./api
