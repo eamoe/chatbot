@@ -1,9 +1,11 @@
 import AppLayout from "../components/AppLayout";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import ShowAlert from "../components/ShowAlert";
 import {adminConfig} from "../config";
 
 const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
+
 const NewWord = () => {
 
     const emptyWord = {
@@ -14,12 +16,14 @@ const NewWord = () => {
 
     const [newWord, setNewWord] = useState(emptyWord)
     const [error, setError] = useState([])
-
+    const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
     const navigate = useNavigate();
 
     const handleSubmit = (e)=>{
         e.preventDefault()
         addWord(newWord)
+        setNewWord(emptyWord)
+        setAlert({ show: false, message: "", variant: "" }); // Reset the alert state before making a new request
     }
 
     const onChange = (e) => {
@@ -47,14 +51,16 @@ const NewWord = () => {
                 return `${el.loc[1]} -${el.msg}`;
             });
             setError(errArray);
+            setAlert({ show: true, variant: "danger", message: errArray.join(", ") });
         } else {
             setError([]);
-            navigate("/words");
+            setAlert({ show: true, variant: "success", message: "Word added successfully!" });
         }
     };
 
   return (
       <AppLayout>
+          {alert.show && <ShowAlert show={alert.show} variant={alert.variant} message={alert.message} />}
           <div className="row my-5">
               <h2 className="text-center">Add New Word</h2>
               <div className="col-2"></div>
