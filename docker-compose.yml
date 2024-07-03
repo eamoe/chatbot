@@ -4,31 +4,46 @@ services:
 
   chatbot:
     build:
-      context: ./tg_app
+      context: ./telegram-bot
       dockerfile: Dockerfile
-    image: chatbot:0.1
-    container_name: tg_app
-    expose:
-      - 8000
+    image: telegram-bot:0.1
+    container_name: telegram-bot
     env_file:
-      - ./.env.tg-app
+      - ./.env.bot
     networks:
       - tresaurus-app-public-network
     labels:
       - com.compose.app=tresaurus-app
 
-  web:
+  api:
     build:
-      context: ./web_app
+      context: ./api
       dockerfile: Dockerfile
-    image: webapp:0.1
-    container_name: web_app
+    image: api:0.1
+    container_name: api
     ports:
-      - "5000:5000"
+      - "8475:8000"
     depends_on:
       - mongo_db
     env_file:
-      - ./.env.web-app
+      - ./.env.api
+    networks:
+      - tresaurus-app-public-network
+    labels:
+      - com.compose.app=tresaurus-app
+
+  react-app:
+    build:
+      context: ./admin/dashboard
+      dockerfile: Dockerfile
+    image: react-app:0.1
+    container_name: react-app
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+#    volumes:
+#      - ./build:/usr/share/nginx/html
     networks:
       - tresaurus-app-public-network
     labels:
@@ -54,7 +69,7 @@ services:
     depends_on:
       - mongo_db
     env_file:
-      - ./.env.mongo-express
+      - ./.env.express
     networks:
       - tresaurus-app-public-network
     labels:
