@@ -42,8 +42,6 @@ services:
       - "3000:80"
     depends_on:
       - api
-    env_file:
-      - ./.env.admin
 #    volumes:
 #      - ./build:/usr/share/nginx/html
     networks:
