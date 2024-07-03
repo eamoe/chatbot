@@ -5,9 +5,9 @@
 - [Features](#features)
 - [Technical Documentation](#technical-documentation)
   - [Application Modules](#application-modules)
-     - [Telegram Bot Module](#telegram-bot-module)
-     - [API Module](#api-module)
-     - [Admin Panel Module](#admin-panel-module)
+     - [Telegram Bot](#telegram-bot-module)
+     - [API](#api-module)
+     - [Admin Panel](#admin-panel-module)
 
 ## Introduction
 
@@ -86,13 +86,13 @@ Our Telegram Bot application is composed of several key modules,
 each designed to handle specific functionalities and provide a comprehensive user experience.
 The main modules include:
 
-* Telegram Bot Module: This module handles all interactions with users on the Telegram platform.
+* **Telegram Bot**: This module handles all interactions with users on the Telegram platform.
 It processes commands, sends responses, and manages user sessions to ensure a seamless and interactive experience.
-* API Module: Built with FastAPI, this module serves as the backend of the application.
+* **API**: Built with FastAPI, this module serves as the backend of the application.
 It manages the database, processes requests from the bot and admin panel,
 and ensures secure and efficient data handling. This module also includes endpoints for adding, retrieving,
 and managing vocabulary data.
-* Admin Panel Module: The admin panel provides a user-friendly interface for users and administrators
+* **Admin Panel**: The admin panel provides a user-friendly interface for users and administrators
 to manage the application's data and settings. It allows for the oversight of user activities, monitoring progress,
 and making updates to the word lists and user preferences.
 
