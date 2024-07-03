@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 from routers.words import router as words_router
 import uvicorn
+from contextlib import asynccontextmanager
 
 
 origins = [
@@ -14,7 +15,18 @@ origins = [
     # "http://localhost:8000",
 ]
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Attach the MongoDB connection to the startup of FastAPI
+    app.mongodb_client = AsyncIOMotorClient(DB_URL)
+    app.mongodb = app.mongodb_client[DB_NAME]
+    await app.mongodb[COLLECTION_NAME].create_index([("wordName", 1)])
+    yield
+    # Close the MongoDB connection by attaching it to the shutdown of FastAPI
+    app.mongodb_client.close()
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,
@@ -23,20 +35,6 @@ app.add_middleware(CORSMiddleware,
                    allow_headers=["*"],)
 
 app.include_router(words_router, prefix="/words", tags=["words"])
-
-
-# Attach the MongoDB connection to the event startup of FastAPI
-@app.on_event("startup")
-async def startup_db_client():
-    app.mongodb_client = AsyncIOMotorClient(DB_URL)
-    app.mongodb = app.mongodb_client[DB_NAME]
-    await app.mongodb[COLLECTION_NAME].create_index([("wordName", 1)])
-
-
-# Close the MongoDB connection by attaching it to the event shutdown  of FastAPI
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    app.mongodb_client.close()
 
 
 if __name__ == "__main__":
