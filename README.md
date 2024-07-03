@@ -2,6 +2,7 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
+2. [Features](#features)
 2. [Application Modules](#application-modules)
    - [Telegram Bot](#telegram-bot)
      - [Commands](#telegram-bot-commands)
@@ -21,28 +22,63 @@ Tresaurus helps you memorize new words effortlessly through interactive quizzes 
 making language learning engaging and effective. Perfect for students, professionals,
 and language enthusiasts looking to expand their vocabulary.
 
+## Features
+
+Below is a comprehensive list of commands and features to guide you through using the bot.
+
+- `/start` Initialize the bot and receive a welcome message.
+This command provides instructions on how to use the bot effectively.
+
+- `/help` Get a list of all available commands and their descriptions.
+This is a quick reference to understand the functionalities offered by the bot.
+
+- `/addword [word] [definition]` Add new words along with their definitions to your personal vocabulary list.
+This helps in expanding your vocabulary database.
+
+- `/showwords` Display the list of all words and their definitions that you have added.
+This allows you to review your vocabulary at any time.
+
+- `/removeword [word]` Remove a word from your vocabulary list.
+This is useful for managing and updating your vocabulary.
+
+- `/quiz` Start a vocabulary quiz where the bot randomly picks a word and asks for its definition or vice versa.
+This helps in testing and reinforcing your knowledge.
+
+- `/translate [word] [language]` Translate a given word into a specified language using an external API,
+such as the Google Translate API. This feature aids in understanding words in different languages.
+
+- `/examples [word]` Provide example sentences using the given word to help understand its usage in context.
+This is useful for learning how to use new words correctly.
+
+- `/synonyms [word]` Provide synonyms for a given word. This helps in expanding your vocabulary with similar words.
+
+- `/randomword` Show a random word from your vocabulary list to encourage regular revision
+and keep your learning engaging.
+
+- `/review [interval]` Set a review interval (daily, weekly) to get periodic reminders to review your vocabulary.
+This helps in consistent learning and retention.
+
+- `/import [file]` Allow users to import a list of words from a file (e.g., CSV format).
+This is useful for quickly adding a large number of words to your list.
+
+- `/export` Allow users to export their vocabulary list to a file.
+This helps in backing up your data or sharing it with others.
+
+- `/progress` Track and display your progress, including words learned, quizzes taken, and success rates.
+This helps in monitoring your improvement over time.
+
+- `/settings` Configure user preferences such as preferred quiz type, notification settings, and more.
+This allows for a personalized learning experience.
+
+- `/feedback` Provide a way for users to give feedback about the bot or report issues.
+This helps in improving the bot based on user input.
+
+By using these commands, you can effectively manage your vocabulary learning process,
+track your progress, and personalize your learning experience. Happy learning!
+
 ## Application Modules
 
 ### Telegram Bot
-
-#### Telegram Bot Commands
-
-1. `/start`: Initialize the bot and provide a welcome message with instructions on how to use the bot.
-2. `/help`: Provide a list of available commands and their descriptions.
-3. `/addword [word] [definition]`: Allow users to add new words along with their definitions to their personal vocabulary list.
-4. `/showwords`: Display the list of all words and their definitions that the user has added.
-5. `/removeword [word]`: Remove a word from the user's vocabulary list.
-6. `/quiz`: Start a vocabulary quiz, where the bot randomly picks a word and asks the user for its definition or vice versa.
-7. `/translate [word] [language]`: Translate a given word into a specified language using an external API (like Google Translate API).
-8. `/examples [word]`: Provide example sentences using the given word to help understand its usage.
-9. `/synonyms [word]`: Provide synonyms for a given word.
-10. `/randomword`: Show a random word from the user's vocabulary list to encourage regular revision.
-11. `/review [interval]`: Set a review interval (daily, weekly) to get periodic reminders to review vocabulary.
-12. `/import [file]`: Allow users to import a list of words from a file (e.g., CSV format).
-13. `/export`: Allow users to export their vocabulary list to a file.
-14. `/progress`: Track and display the user's progress, including words learned, quizzes taken, and success rates.
-15. `/settings`: Configure user preferences such as preferred quiz type, notification settings, etc.
-16. `/feedback`: Provide a way for users to give feedback about the bot or report issues.
 
 #### Telegram Bot Module Structure
 
