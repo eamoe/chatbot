@@ -4,8 +4,7 @@ import FilterableWordList from "../components/word-list/FilterableWordList";
 import Pagination from "../components/word-list/Pagination";
 import {useState, useEffect} from "react";
 
-// const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
-const REACT_APP_BASE_URL = `http://10.211.55.11:8475`;
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 const Words = () => {
 
     const [words, setWords] = useState([])
