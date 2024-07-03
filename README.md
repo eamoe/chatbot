@@ -10,6 +10,9 @@
        - [Features](#api-features)
        - [Endpoints](#api-endpoints)
      - [Admin Panel](#admin-panel-module)
+  - [Database](#database-overview)
+    - [Usage](#db-usage)
+    - [Configuration](#db-configuration)
 
 ## Introduction
 
@@ -77,7 +80,7 @@ track your progress, and personalize your learning experience. Happy learning!
 
 Welcome to the technical documentation for our Telegram Bot!
 This bot is a powerful tool designed to help users enhance their vocabulary through a variety of interactive features.
-Built using modern technologies like FastAPI for the backend and React for the frontend,
+Built using modern technologies like FastAPI for the backend and React and Bootstrap for the frontend,
 this bot integrates seamlessly with Telegram to offer a smooth and engaging user experience.
 This documentation covers all aspects of the bot's features, commands,
 and implementation details to help developers understand and contribute to the project.
@@ -169,3 +172,24 @@ providing an overview of key metrics and quick access to other pages.
 * New Word Page (`/words/new`): Contains a form for adding new words to the vocabulary list.
 * Single Word Page (`/words/:id`): Enables viewing, updating, and deleting a specific word by its ID.
 * About Page (`/about`): Provides information about the application and its purpose.
+
+### Database Overview
+
+The project's database is built on MongoDB.
+
+To facilitate easy access and management of the MongoDB database, we utilize `mongo-express`,
+a web-based administrative interface for MongoDB.
+Mongo-express provides a user-friendly interface for interacting with the database, making tasks such as CRUD operations,
+data exploration, and performance monitoring straightforward and accessible.
+
+#### DB Usage
+
+To access the MongoDB database via mongo-express, ensure that both MongoDB and mongo-express services are running.
+By navigating to the specified URL (usually http://localhost:8081 or a similar address depending on your configuration),
+you can interact with the database through the mongo-express interface.
+
+#### DB Configuration
+
+In the project's configuration files, the connection settings for MongoDB and mongo-express are defined.
+These settings include the database URI, authentication details,
+and other relevant parameters necessary for establishing a connection and securing the database.
