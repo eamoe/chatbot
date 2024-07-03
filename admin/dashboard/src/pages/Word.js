@@ -5,8 +5,7 @@ import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 
 // const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
-const REACT_APP_BASE_URL = `http://10.211.55.11:8475/words/`;
-console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
+const REACT_APP_BASE_URL = `http://10.211.55.11:8475`;
 const Word = () => {
 
     let {id} = useParams()
@@ -31,7 +30,7 @@ const Word = () => {
     };
 
     const getWord =  async() => {
-        const res = await fetch(`${REACT_APP_BASE_URL}${id}`)
+        const res = await fetch(`${REACT_APP_BASE_URL}/words/${id}`)
         if (!res.ok){
             setError("Error fetching word")
         } else {
@@ -44,7 +43,7 @@ const Word = () => {
     }
 
     const handleDelete = async () => {
-        const response = await fetch(`${REACT_APP_BASE_URL}${id}`,{
+        const response = await fetch(`${REACT_APP_BASE_URL}/words/${id}`,{
             method:"DELETE",
             headers:{
                 'Content-Type':'application/json'
@@ -64,7 +63,7 @@ const Word = () => {
     }
 
     const updateWord = async () => {
-        const response = await fetch(`${REACT_APP_BASE_URL}${id}`,{
+        const response = await fetch(`${REACT_APP_BASE_URL}/words/${id}`,{
             method:"PATCH",
             headers:{
                 'Content-Type':'application/json'

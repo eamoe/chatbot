@@ -5,8 +5,7 @@ import Pagination from "../components/word-list/Pagination";
 import {useState, useEffect} from "react";
 
 // const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
-const REACT_APP_BASE_URL = `http://10.211.55.11:8475/words/`;
-console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
+const REACT_APP_BASE_URL = `http://10.211.55.11:8475`;
 const Words = () => {
 
     const [words, setWords] = useState([])
@@ -19,7 +18,7 @@ const Words = () => {
     }, [filterText, page]);
 
     const fetchWords = async () => {
-        const response = await fetch(`${REACT_APP_BASE_URL}?word_name=${filterText}&page=${page}`);
+        const response = await fetch(`${REACT_APP_BASE_URL}/words/?word_name=${filterText}&page=${page}`);
         const data = await response.json();
         setWords(data.words);
         setTotalPages(data.totalPages);

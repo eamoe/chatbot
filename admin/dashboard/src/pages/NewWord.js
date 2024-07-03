@@ -2,8 +2,8 @@ import AppLayout from "../components/AppLayout";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
-
+// const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = `http://10.211.55.11:8475`;
 const NewWord = () => {
 
     const emptyWord = {
@@ -31,7 +31,7 @@ const NewWord = () => {
     }
 
     const addWord = async (newWord)=>{
-        const response = await fetch(REACT_APP_BASE_URL, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/words`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,6 @@ const NewWord = () => {
             });
             setError(errArray);
         } else {
-            console.log("Successfully added new word:", data); // Debugging log
             setError([]);
             navigate("/words");
         }
