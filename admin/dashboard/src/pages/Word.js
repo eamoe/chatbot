@@ -5,7 +5,7 @@ import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 
 // const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
-const REACT_APP_BASE_URL = `http://localhost:8475/words/`;
+const REACT_APP_BASE_URL = `http://10.211.55.11:8475/words/`;
 console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
 const Word = () => {
 
