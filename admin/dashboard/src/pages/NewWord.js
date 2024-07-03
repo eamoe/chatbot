@@ -1,8 +1,9 @@
 import AppLayout from "../components/AppLayout";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {adminConfig} from "../config";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
 const NewWord = () => {
 
     const emptyWord = {

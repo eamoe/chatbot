@@ -3,8 +3,9 @@ import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
 import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
+import {adminConfig} from "../config";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
 const Word = () => {
 
     let {id} = useParams()

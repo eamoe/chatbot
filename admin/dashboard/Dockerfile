@@ -15,8 +15,6 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-ARG REACT_APP_BASE_URL
-
 # Build the React application
 RUN npm run build
 

@@ -36,8 +36,6 @@ services:
     build:
       context: ./admin/dashboard
       dockerfile: Dockerfile
-      args:
-        - REACT_APP_BASE_URL=${REACT_APP_BASE_URL}
     image: react-app:0.1
     container_name: react-app
     ports:

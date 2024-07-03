@@ -3,8 +3,9 @@ import SearchBar from "../components/word-list/SearchBar";
 import FilterableWordList from "../components/word-list/FilterableWordList";
 import Pagination from "../components/word-list/Pagination";
 import {useState, useEffect} from "react";
+import {adminConfig} from "../config";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
 const Words = () => {
 
     const [words, setWords] = useState([])
