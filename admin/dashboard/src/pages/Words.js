@@ -4,7 +4,8 @@ import FilterableWordList from "../components/word-list/FilterableWordList";
 import Pagination from "../components/word-list/Pagination";
 import {useState, useEffect} from "react";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+// const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = `http://localhost:8475/words/`;
 console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
 const Words = () => {
 

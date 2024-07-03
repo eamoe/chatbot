@@ -4,7 +4,9 @@ import FormTextarea from "../components/FormTextarea";
 import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+// const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+const REACT_APP_BASE_URL = `http://localhost:8475/words/`;
+console.log("LOOK AT ME:" + REACT_APP_BASE_URL)
 const Word = () => {
 
     let {id} = useParams()
