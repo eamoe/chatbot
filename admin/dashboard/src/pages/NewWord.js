@@ -31,7 +31,6 @@ const NewWord = () => {
     }
 
     const addWord = async (newWord)=>{
-        console.log("Create word at: " + `${REACT_APP_BASE_URL}/words`)
         const response = await fetch(`${REACT_APP_BASE_URL}/words`, {
             method: "POST",
             headers: {
