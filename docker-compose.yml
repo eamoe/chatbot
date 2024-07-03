@@ -2,18 +2,18 @@ version: '3.8'
 
 services:
 
-#  chatbot:
-#    build:
-#      context: ./telegram-bot
-#      dockerfile: Dockerfile
-#    image: telegram-bot:0.1
-#    container_name: telegram-bot
-#    env_file:
-#      - ./.env.bot
-#    networks:
-#      - tresaurus-app-public-network
-#    labels:
-#      - com.compose.app=tresaurus-app
+  chatbot:
+    build:
+      context: ./telegram-bot
+      dockerfile: Dockerfile
+    image: telegram-bot:0.1
+    container_name: telegram-bot
+    env_file:
+      - ./.env.bot
+    networks:
+      - tresaurus-app-public-network
+    labels:
+      - com.compose.app=tresaurus-app
 
   api:
     build:
