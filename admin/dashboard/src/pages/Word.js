@@ -3,9 +3,11 @@ import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
 import {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
+import ShowAlert from "../components/ShowAlert";
 import {adminConfig} from "../config";
 
 const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
+
 const Word = () => {
 
     let {id} = useParams()
@@ -16,6 +18,7 @@ const Word = () => {
     const [wordName, setWordName] = useState(null)
     const [partOfSpeech, setPartOfSpeech] = useState(null)
     const [error, setError] = useState([])
+    const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
 
     const onChangeWordName = (event) => {
         setWordName(event.target.value);
@@ -32,7 +35,12 @@ const Word = () => {
     const getWord =  async() => {
         const res = await fetch(`${REACT_APP_BASE_URL}/words/${id}`)
         if (!res.ok){
-            setError("Error fetching word")
+            const data  = await res.json()
+            let errArray = data.detail.map((el) => {
+                return `${el.loc[1]} -${el.msg}`;
+            });
+            setError(errArray);
+            setAlert({ show: true, variant: "danger", message: errArray.join(", ") });
         } else {
             const data = await res.json()
             setWord(data)
@@ -56,6 +64,7 @@ const Word = () => {
                     return `${el.loc[1]} -${el.msg}`
                 })
             setError(errArray)
+            setAlert({ show: true, variant: "danger", message: errArray.join(", ") });
         } else {
             setError([])
             navigate("/words")
@@ -76,28 +85,35 @@ const Word = () => {
                 return `${el.loc[1]} -${el.msg}`
             })
             setError(errArray)
+            setAlert({ show: true, variant: "danger", message: errArray.join(", ") });
         } else {
             setError([])
+            setAlert({ show: true, variant: "success", message: "Word was updated successfully!" });
             getWord()
         }
 
 
     }
 
-    useEffect(()=>{getWord(id)},[id])
+    useEffect(() => {
+        getWord(id);
+    }, [id]);
+
+    useEffect(() => {
+        if (alert.show) {
+            const timer = setTimeout(() => {
+                setAlert({ ...alert, show: false });
+            }, 2000); // Auto-hide alert after 5 seconds
+            return () => clearTimeout(timer);
+        }
+    }, [alert]);
 
   return (
       <AppLayout>
-          {
-              error &&
-              <ul className="mx-auto text-center">
-                  { error && error.map(
-                      (el, index)=>(
-                          <li key={index} className="my-3 p-1 border-1 border-danger mx-auto">{el}</li>
-                      )
-                  )}
-              </ul>
-          }
+
+          <div className="px-0 my-3">
+              {alert.show && <ShowAlert show={alert.show} variant={alert.variant} message={alert.message} />}
+          </div>
 
           {
               word &&
