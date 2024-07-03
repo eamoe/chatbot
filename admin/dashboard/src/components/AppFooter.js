@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-      <div className="footer mt-auto py-3">
-        <p className="text-center">&copy; {(new Date().getFullYear())} Tresaurus (admin application)</p>
+      <div className="footer mt-auto pt-3 bg-dark">
+        <p className="text-center text-white">&copy; {(new Date().getFullYear())} Tresaurus</p>
       </div>
       )
 };
