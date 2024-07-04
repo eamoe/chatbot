@@ -1,13 +1,14 @@
 import WordCard from "./Card";
-const WordList = ({words, filterText}) => {
+const WordList = ({ words, filterText }) => {
     const cards = [];
 
     words.forEach((word) => {
-        if (word.wordName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {return;}
+        if (word.wordName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) { return; }
         cards.push(
             <WordCard
                 word={word}
-                key={word.name}/>
+                key={word.name}
+            />
         );
     });
 
@@ -15,7 +16,7 @@ const WordList = ({words, filterText}) => {
         <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-8">
-                <div>{cards}</div>
+                <div>{ cards }</div>
             </div>
             <div className="col-md-2"></div>
         </div>

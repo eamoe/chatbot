@@ -5,15 +5,15 @@ import {Container, Row, Col} from "react-bootstrap";
 const AppLayout = ({children}) => {
   return (
       <Container className="d-flex flex-column min-vh-100 p-0">
-          <Row className="w-100">
+          <Row className="w-100 m-0">
               <Col>
                   <AppHeader />
               </Col>
           </Row>
-          <Row className="flex-grow-1 w-100">
+          <Row className="flex-grow-1 w-100 m-0">
               <Col>{children}</Col>
           </Row>
-          <Row className="w-100">
+          <Row className="w-100 m-0">
               <Col>
                   <AppFooter />
               </Col>

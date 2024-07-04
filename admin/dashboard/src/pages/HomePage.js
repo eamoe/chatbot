@@ -8,7 +8,7 @@ const HomePage = () => {
                 <h2>Dashboard</h2>
                 <Row>
                     <Col md={4}>
-                        <Card>
+                        <Card className="no-hover">
                             <Card.Body>
                                 <Card.Title>Total Words</Card.Title>
                                 <Card.Text>1500</Card.Text>
@@ -16,7 +16,7 @@ const HomePage = () => {
                         </Card>
                     </Col>
                     <Col md={4}>
-                        <Card>
+                        <Card className="no-hover">
                             <Card.Body>
                                 <Card.Title>New Words Added</Card.Title>
                                 <Card.Text>30</Card.Text>
@@ -24,7 +24,7 @@ const HomePage = () => {
                         </Card>
                     </Col>
                     <Col md={4}>
-                        <Card>
+                        <Card className="no-hover">
                             <Card.Body>
                                 <Card.Title>Top Category</Card.Title>
                                 <Card.Text>Nouns</Card.Text>
