@@ -9,7 +9,7 @@ import {Container, Row, Col} from "react-bootstrap";
 const REACT_APP_BASE_URL = adminConfig.REACT_APP_BASE_URL;
 const Words = () => {
 
-    const [words, setWords] = useState([])
+    const [words, setWords] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -39,11 +39,7 @@ const Words = () => {
             <Container>
                 <Row className="mt-5">
                     <Col>
-                        <Pagination
-                            page={page}
-                            totalPages={totalPages}
-                            onPageChange={handlePageChange}
-                        />
+                        <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
                     </Col>
                 </Row>
                 <Row>
@@ -58,11 +54,7 @@ const Words = () => {
                 </Row>
                 <Row className="my-4">
                     <Col>
-                        <Pagination
-                            page={page}
-                            totalPages={totalPages}
-                            onPageChange={handlePageChange}
-                        />
+                        <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
                     </Col>
                 </Row>
             </Container>
