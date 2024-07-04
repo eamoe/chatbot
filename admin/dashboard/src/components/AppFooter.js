@@ -1,9 +1,14 @@
-const Footer = () => {
+import React from 'react';
+import { Container } from 'react-bootstrap';
+
+const AppFooter = () => {
   return (
-      <div className="footer mt-auto pt-3 bg-dark">
-        <p className="text-center text-white">&copy; {(new Date().getFullYear())} Tresaurus</p>
-      </div>
-      )
+    <footer className="mt-auto py-3 bg-dark">
+      <Container>
+        <p className="text-center text-white mb-0">&copy; {(new Date().getFullYear())} Tresaurus</p>
+      </Container>
+    </footer>
+  );
 };
 
-export default Footer;
+export default AppFooter;
