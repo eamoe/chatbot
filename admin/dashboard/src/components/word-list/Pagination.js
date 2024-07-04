@@ -1,9 +1,11 @@
-import React from 'react';
+import { Pagination as BootstrapPagination} from 'react-bootstrap';
 
 const Pagination = ({ page, totalPages, onPageChange }) => {
     const pageRange = (current, total, delta = 2) => {
         const range = [];
-        for (let i = Math.max(2, current - delta); i <= Math.min(total - 1, current + delta); i++) {
+        for (let i = Math.max(2, current - delta);
+             i <= Math.min(total - 1, current + delta);
+             i++) {
             range.push(i);
         }
         if (current - delta > 2) range.unshift("...");
@@ -15,33 +17,44 @@ const Pagination = ({ page, totalPages, onPageChange }) => {
 
     const pages = pageRange(page, totalPages);
 
+    const handlePageChange = (num) => {
+        if (num !== '...') {
+            onPageChange(num);
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }
+    };
+
+    const renderPageItem = (num, idx) => {
+        if (num === '...') {
+            return <BootstrapPagination.Ellipsis key={idx} disabled />;
+        }
+
+        return (
+            <BootstrapPagination.Item
+                key={ idx }
+                active={ num === page }
+                onClick={ () => onPageChange(num) }
+            >
+                { num }
+            </BootstrapPagination.Item>
+        );
+    };
+
     return (
-        <nav>
-            <ul className="pagination justify-content-center">
-                <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>
-                    <button className="page-link" onClick={() => onPageChange(page - 1)}>
-                        Previous
-                    </button>
-                </li>
-                {pages.map((num, idx) => (
-                    <li key={idx}
-                        className={`page-item ${num === page ? 'active' : ''} ${num === "..." ? 'disabled' : ''}`}>
-                        {num === "..." ? (
-                            <span className="page-link">...</span>
-                        ) : (
-                            <button className="page-link" onClick={() => onPageChange(num)}>
-                                {num}
-                            </button>
-                        )}
-                    </li>
-                ))}
-                <li className={`page-item ${page === totalPages ? 'disabled' : ''}`}>
-                    <button className="page-link" onClick={() => onPageChange(page + 1)}>
-                        Next
-                    </button>
-                </li>
-            </ul>
-        </nav>
+        <BootstrapPagination className="justify-content-center">
+            <BootstrapPagination.Prev
+                onClick={ () => onPageChange(page - 1) }
+                disabled={ page === 1 }
+            />
+            { pages.map(renderPageItem) }
+            <BootstrapPagination.Next
+                onClick={ () => onPageChange(page + 1) }
+                disabled={ page === totalPages }
+            />
+        </BootstrapPagination>
     );
 };
 

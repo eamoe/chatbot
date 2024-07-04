@@ -1,43 +1,24 @@
-import {Link, NavLink} from "react-router-dom";
+import {Navbar, Container, Nav} from 'react-bootstrap';
+import {useLocation} from "react-router-dom";
+
 const AppHeader = () => {
-  return (
-      <div id="header" className="row">
-          <nav className="navbar navbar-expand-lg bg-light">
-              <div className="container-fluid">
-                  <Link to="/" className="navbar-brand">Tresaurus</Link>
-                  <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                          aria-expanded="false" aria-label="Toggle navigation">
-                      <span className="navbar-toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li className="nav-item">
-                              <NavLink
-                                  className={({isActive}) => isActive ? "nav-link active" : "nav-link"}
-                                  to="/">Home</NavLink>
-                          </li>
-                          <li className="nav-item">
-                              <NavLink
-                                  className={({isActive}) => isActive ? "nav-link active" : "nav-link"}
-                                  to="/words" end>Words</NavLink>
-                          </li>
-                          <li className="nav-item">
-                              <NavLink
-                                  className={({isActive}) => isActive ? "nav-link active" : "nav-link"}
-                                  to="/words/new">New Word</NavLink>
-                          </li>
-                          <li className="nav-item">
-                              <NavLink
-                                  className={({isActive}) => isActive ? "nav-link active" : "nav-link"}
-                                  to="/about">About</NavLink>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </nav>
-      </div>
-  )
+    const location = useLocation();
+    return (
+        <Navbar bg="dark" variant="dark">
+            <Container>
+                <Navbar.Brand href="/">Tresaurus</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto" activeKey={location.pathname}>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/words">Words</Nav.Link>
+                        <Nav.Link href="/words/new">New word</Nav.Link>
+                        <Nav.Link href="/about">About</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    )
 }
 
 export default AppHeader

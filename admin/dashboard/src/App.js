@@ -1,10 +1,9 @@
 import AppLayout from "./components/AppLayout";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-      <AppLayout>
-          <div>This is the app!</div>
-      </AppLayout>
+      <HomePage />
   );
 }
 

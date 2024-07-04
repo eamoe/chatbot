@@ -1,7 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import './Card.css';
+
 const WordCard = ({ word }) => {
 
-    let {_id, wordName, partOfSpeech, definition} = word
+    const { _id, wordName, partOfSpeech, definition } = word;
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -9,14 +13,16 @@ const WordCard = ({ word }) => {
     };
 
     return (
-        <div onClick={handleClick} style={{cursor: "pointer"}}>
-            <div className="border-1 shadow rounded-3 p-3 my-5">
-                <p className="h5 text-center mb-3">
-                    <span>{wordName.charAt(0).toLowerCase() + wordName.slice(1)}</span>
-                </p>
-                <div><span>({partOfSpeech}) {definition}</span></div>
-            </div>
-        </div>
+        <Card className="my-3 shadow-sm" onClick={ handleClick } style={{ cursor: 'pointer' }}>
+            <Card.Body>
+                <Card.Title className="text-center">
+                    {wordName.charAt(0).toLowerCase() + wordName.slice(1)}
+                </Card.Title>
+                <Card.Text className="text-center">
+                    <small className="text-muted">({ partOfSpeech })</small> { definition }
+                </Card.Text>
+            </Card.Body>
+        </Card>
     );
 }
 
